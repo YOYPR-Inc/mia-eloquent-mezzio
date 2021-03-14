@@ -1,6 +1,7 @@
 <?php namespace Mia\Database\Query;
 
 use \Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Description of Configure
@@ -61,9 +62,9 @@ class Configure
     }
     /**
      * Configura la query con los datos configurados
-     * @param DB $query
+     * @param Model $query
      */
-    public function run($query)
+    public function run(Model $query)
     {
         // Configuramos los Wheres
         foreach($this->where as $where){
