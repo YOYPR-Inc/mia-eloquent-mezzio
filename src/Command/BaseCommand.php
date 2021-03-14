@@ -28,8 +28,9 @@ abstract class BaseCommand
 
     protected function initEloquent()
     {
+        $config = include 'config/autoload/eloquent.global.php';
         $this->capsule = new \Illuminate\Database\Capsule\Manager();
-        $this->capsule->addConnection(include 'config/autoload/eloquent.global.php');
+        $this->capsule->addConnection($config['eloquent']);
         $this->capsule->setAsGlobal();
         $this->capsule->bootEloquent();
     }
@@ -43,6 +44,6 @@ abstract class BaseCommand
 
     public function run()
     {
-        
+
     }
 }
