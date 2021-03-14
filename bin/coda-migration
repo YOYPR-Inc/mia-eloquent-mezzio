@@ -21,6 +21,9 @@ $command = $argc > 1 ? $argv[1] : '';
 if($command == 'migrate'){
     $cmd = new \Mia\Database\Command\MigrateCommand();
     $cmd->run();
+}else if ($command == 'make') {
+    $cmd = new \Mia\Database\Command\MakeCommand($argv[2]);
+    $cmd->run();
 }
 
 exit(0);

@@ -27,7 +27,8 @@
         "bin/coda-migration"
     ],
     "scripts": {
-        "coda-migrate": "coda-migration migrate"
+        "coda-migrate": "coda-migration migrate",
+        "coda-make-migrate": "coda-migration make"
     },
     "repositories": [
         {
