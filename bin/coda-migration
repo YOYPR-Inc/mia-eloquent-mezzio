@@ -6,6 +6,9 @@ declare(strict_types=1);
 namespace Mia\Database;
 
 $command = $argc > 1 ? $argv[1] : '';
-echo $command;
+if($command == 'migrate'){
+    $cmd = new Mia\Database\Command\MigrateCommand();
+    $cmd->run();
+}
 
 exit(0);
