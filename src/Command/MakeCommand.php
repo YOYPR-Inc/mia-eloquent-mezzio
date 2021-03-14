@@ -46,7 +46,7 @@ class MakeCommand extends BaseMigrationCommand
         } catch (\Exception $exc) { }
 
         $now = new \DateTime();
-        $dateName = $now->format('Y_m_d_H:i:s') . '_' . $now->format('H') . '_' . $now->format('i') . '_' . $now->format('s');
+        $dateName = $now->format('Y_m_d') . '_' . $now->format('H') . $now->format('i') . $now->format('s');
 
         file_put_contents($this->savePath . $dateName . '_' . $this->name . '.php', $file);
     }
