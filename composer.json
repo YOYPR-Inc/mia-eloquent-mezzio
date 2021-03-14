@@ -1,7 +1,7 @@
 {
     "name": "agencycoda/mia-eloquent-mezzio",
     "description": "The library for Mezzio",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "minimum-stability": "stable",
     "license": "MIT",
     "authors": [{
@@ -15,6 +15,7 @@
         "psr/http-server-middleware": "^1.0",
         "illuminate/database": "^8.20",
         "illuminate/pagination": "^8.20",
+        "illuminate/filesystem": "^8.20",
         "agencycoda/mia-core-mezzio": "dev-main"
     },
     "autoload": {
@@ -22,9 +23,16 @@
             "Mia\\Database\\": "src/"
         }
     },
-    "repositories": [{
-        "type": "git",
-        "url": "https://github.com/agencycoda/mia-core-mezzio.git"
-    }
-]
+    "bin": [
+        "bin/coda-migration"
+    ],
+    "scripts": {
+        "coda-migrate": "coda-migration migrate"
+    },
+    "repositories": [
+        {
+            "type": "git",
+            "url": "https://github.com/agencycoda/mia-core-mezzio.git"
+        }
+    ]
 }

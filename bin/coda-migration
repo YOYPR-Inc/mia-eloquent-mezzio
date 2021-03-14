@@ -1,0 +1,11 @@
+#!/usr/bin/env php
+<?php 
+
+declare(strict_types=1);
+
+namespace Mia\Database;
+
+$command = $argc > 1 ? $argv[1] : '';
+echo $command;
+
+exit(0);
