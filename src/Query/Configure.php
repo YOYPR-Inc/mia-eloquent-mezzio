@@ -1,7 +1,7 @@
 <?php namespace Mia\Database\Query;
 
 use \Illuminate\Database\Capsule\Manager as DB;
-use Illuminate\Database\Eloquent\Model;
+use \Illuminate\Database\Eloquent\Model;
 
 /**
  * Description of Configure
