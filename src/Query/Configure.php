@@ -64,7 +64,7 @@ class Configure
      * Configura la query con los datos configurados
      * @param Model $query
      */
-    public function run(Model $query)
+    public function run($query)
     {
         // Configuramos los Wheres
         foreach($this->where as $where){
