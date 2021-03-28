@@ -24,6 +24,9 @@ if($command == 'migrate'){
 }else if ($command == 'make') {
     $cmd = new \Mia\Database\Command\MakeCommand($argv[2]);
     $cmd->run();
+}else if ($command == 'make:seeder') {
+    $cmd = new \Mia\Database\Command\MakeSeederCommand($argv[2]);
+    $cmd->run();
 }
 
 exit(0);
