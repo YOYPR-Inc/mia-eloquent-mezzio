@@ -7,3 +7,7 @@ $container = require 'config/container.php';
 // Inicializar Database
 Mia\Database\Eloquent::install($container);
 ```
+
+
+1. composer coda-migrate
+2. composer coda-make-migrate
