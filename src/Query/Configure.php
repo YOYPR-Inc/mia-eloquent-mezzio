@@ -21,6 +21,11 @@ class Configure
      */
     protected $page = 1;
     /**
+     * Almacena todos los selects de la query
+     * @var array
+     */
+    protected $selects = array();
+    /**
      * Almacena todos los wheres de la query
      * @var array
      */
@@ -71,6 +76,11 @@ class Configure
      */
     public function run($query)
     {
+        // Configuramos los Selects
+        foreach($this->selects as $select){
+            $query->selectRaw($select);
+        }
+
         // Configuramos los Joins
         foreach($this->joins as $join){
             $query->join($join['table'], $join['column_table'], '=', $join['column_relation']);
@@ -105,6 +115,14 @@ class Configure
         }
         // Configuramos Relaciones
         $query->with($this->withs);
+    }
+    /**
+     * Agregar un select a la query
+     * @param string $select
+     */
+    public function addSelectRaw($select)
+    {
+        $this->selects[] = $select;
     }
     /**
      * Agregar un join a la query
