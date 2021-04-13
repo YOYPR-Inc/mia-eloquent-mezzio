@@ -26,6 +26,11 @@ class Configure
      */
     protected $where = array();
     /**
+     * Almacena todos los joins de la query
+     * @var array
+     */
+    protected $joins = array();
+    /**
      * Almacena las relaciones
      * @var array
      */
@@ -66,6 +71,11 @@ class Configure
      */
     public function run($query)
     {
+        // Configuramos los Joins
+        foreach($this->joins as $join){
+            $query->join($join['table'], $join['column_table'], '=', $join['column_relation']);
+        }
+
         // Configuramos los Wheres
         foreach($this->where as $where){
             if(array_key_exists('date', $where)){
@@ -95,6 +105,15 @@ class Configure
         }
         // Configuramos Relaciones
         $query->with($this->withs);
+    }
+    /**
+     * Agregar un join a la query
+     * @param string $key
+     * @param mixed $value
+     */
+    public function addJoin($table, $tableColumn, $tableRelation)
+    {
+        $this->joins[] = array('table' => $table, 'column_table' => $tableColumn, 'column_relation' => $tableRelation);
     }
     /**
      * Agregar un where a la query
@@ -197,6 +216,14 @@ class Configure
     }
     /**
      * 
+     * @return array
+     */
+    public function getJoins()
+    {
+        return $this->joins;
+    }
+    /**
+     * 
      * @param string $key
      * @return arary|null
      */
@@ -243,6 +270,8 @@ class Configure
         }
         // Procesar numero de pagina
         $this->page = $handler->getParam($request, 'page', 1);
+        // Procesar Joins
+        $this->processJoins($handler->getParam($request, 'joins', []));
         // Procesar Wheres
         $this->processWhere($handler->getParam($request, 'where', ''));
         // Procesar campo de busqueda
@@ -251,6 +280,27 @@ class Configure
         $this->limit = $handler->getParam($request, 'limit', 50);
         // Procesar relaciones
         $this->withs = $handler->getParam($request, 'withs', []);
+    }
+    /**
+     * Procesa los joins enviados en la petición
+     * @param array $where
+     * @return boolean
+     */
+    protected function processJoins($data)
+    {
+        if($data == null){
+            return false;
+        }
+
+        foreach($data as $join){
+            if(!array_key_exists('table', $join)){
+                continue;
+            }
+
+            $this->addJoin($join['table'], $join['column'], $join['relation']);
+        }
+
+        return true;
     }
     /**
      * Procesa los wheres enviados en la petición
