@@ -15,6 +15,9 @@ class MigrateCommand extends BaseMigrationCommand
     public function run()
     {
         $this->migrator->run([
+            'vendor/agencycoda/mia-core-mezzio/database/migrations',
+            'vendor/agencycoda/mia-auth-mezzio/database/migrations',
+            'vendor/agencycoda/mia-mail-mezzio/database/migrations',
             'database/migrations'
         ]);
     }
