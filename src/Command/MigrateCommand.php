@@ -18,6 +18,7 @@ class MigrateCommand extends BaseMigrationCommand
             'vendor/agencycoda/mia-core-mezzio/database/migrations',
             'vendor/agencycoda/mia-auth-mezzio/database/migrations',
             'vendor/agencycoda/mia-mail-mezzio/database/migrations',
+            'vendor/agencycoda/mia-legal-mezzio/database/migrations',
             'database/migrations'
         ]);
     }
