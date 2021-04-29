@@ -36,6 +36,16 @@ class Configure
      */
     protected $joins = array();
     /**
+     * Almacena todos los joins de la query
+     * @var array
+     */
+    protected $leftJoins = array();
+    /**
+     * Almacena todos los joins de la query
+     * @var array
+     */
+    protected $rightJoins = array();
+    /**
      * Almacena las relaciones
      * @var array
      */
@@ -85,6 +95,12 @@ class Configure
         foreach($this->joins as $join){
             $query->join($join['table'], $join['column_table'], '=', $join['column_relation']);
         }
+        foreach($this->leftJoins as $join){
+            $query->leftJoin($join['table'], $join['column_table'], '=', $join['column_relation']);
+        }
+        foreach($this->rightJoins as $join){
+            $query->rightJoin($join['table'], $join['column_table'], '=', $join['column_relation']);
+        }
 
         // Configuramos los Wheres
         foreach($this->where as $where){
@@ -132,6 +148,24 @@ class Configure
     public function addJoin($table, $tableColumn, $tableRelation)
     {
         $this->joins[] = array('table' => $table, 'column_table' => $tableColumn, 'column_relation' => $tableRelation);
+    }
+    /**
+     * Agregar un join a la query
+     * @param string $key
+     * @param mixed $value
+     */
+    public function addLeftJoin($table, $tableColumn, $tableRelation)
+    {
+        $this->leftJoins[] = array('table' => $table, 'column_table' => $tableColumn, 'column_relation' => $tableRelation);
+    }
+    /**
+     * Agregar un join a la query
+     * @param string $key
+     * @param mixed $value
+     */
+    public function addRightJoin($table, $tableColumn, $tableRelation)
+    {
+        $this->rightJoins[] = array('table' => $table, 'column_table' => $tableColumn, 'column_relation' => $tableRelation);
     }
     /**
      * Agregar un where a la query
