@@ -235,6 +235,13 @@ class Configure
         return false;
     }
     /**
+     * 
+     */
+    public function cleanOrder()
+    {
+        $this->order = [];
+    }
+    /**
      * Obtiene numero de pagina
      * @return int
      */
