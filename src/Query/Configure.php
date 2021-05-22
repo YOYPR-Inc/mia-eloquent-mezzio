@@ -133,6 +133,13 @@ class Configure
         $query->with($this->withs);
     }
     /**
+     * 
+     */
+    public function addWith($key)
+    {
+        $this->withs[] = $key;
+    }
+    /**
      * Agregar un select a la query
      * @param string $select
      */
@@ -240,6 +247,13 @@ class Configure
     public function cleanOrder()
     {
         $this->order = [];
+    }
+    /**
+     * 
+     */
+    public function cleanWiths()
+    {
+        $this->withs = [];
     }
     /**
      * Obtiene numero de pagina
