@@ -31,6 +31,12 @@ class Configure
      */
     protected $where = array();
     /**
+     * Almacena todos los wheres de la query V2
+     * Abstract Where
+     * @var array
+     */
+    protected $wheres = array();
+    /**
      * Almacena todos los joins de la query
      * @var array
      */
@@ -122,6 +128,11 @@ class Configure
                 $query->where($where['key'], '=', $where['value']);
             }
         }
+        // Configuramos los Wheres V2
+        foreach($this->wheres as $where){
+            $where->run($query);
+        }
+
         // Configuramos orden
         if($this->hasOrder() && $this->order[0]['column'] == 'nearby'){
             $query->addSelect(DB::raw("6371 * acos(cos(radians(" . $this->order[0]['latitude'] . ")) * cos(radians(latitude)) * cos(radians(longitude) - radians(" . $this->order[0]['longitude'] . ")) + sin(radians(" .$this->order[0]['latitude']. ")) * sin(radians(latitude))) AS distance"));
@@ -209,6 +220,21 @@ class Configure
     public function addWhereBetween($key, $from, $to)
     {
         $this->where[] = array('key' => $key, 'from' => $from, 'to' => $to, 'between' => true);
+    }
+    /**
+     * Add whereRaw with keys
+     *
+     * @param array $keys
+     * @param mixed $value
+     * @return void
+     */
+    public function addWhereLikes($keys, $value)
+    {
+        $this->wheres[] = FactoryWhere::create(array(
+            'type' => AbstractWhere::TYPE_LIKES,
+            'keys' => $keys,
+            'value' => $value
+        ));
     }
     /**
      * Elimina un where del listado
@@ -347,6 +373,7 @@ class Configure
         $this->processJoins($handler->getParam($request, 'joins', []));
         // Procesar Wheres
         $this->processWhere($handler->getParam($request, 'where', ''));
+        $this->wheres = FactoryWhere::createAll($handler->getParam($request, 'wheres', []));
         // Procesar campo de busqueda
         $this->search = $handler->getParam($request, 'search', '');
         // Procesar campo limite
