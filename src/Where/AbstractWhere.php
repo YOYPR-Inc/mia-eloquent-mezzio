@@ -1,4 +1,4 @@
-<?php namespace Mia\Database\Query;
+<?php namespace Mia\Database\Where;
 
 use \Illuminate\Database\Capsule\Manager as DB;
 use \Illuminate\Database\Eloquent\Model;
