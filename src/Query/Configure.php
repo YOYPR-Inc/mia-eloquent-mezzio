@@ -2,6 +2,8 @@
 
 use \Illuminate\Database\Capsule\Manager as DB;
 use \Illuminate\Database\Eloquent\Model;
+use Mia\Database\Where\AbstractWhere;
+use Mia\Database\Where\FactoryWhere;
 
 /**
  * Description of Configure
