@@ -153,6 +153,39 @@ class Configure
         $this->withs[] = $key;
     }
     /**
+     * 
+     *
+     * @param string $key
+     * @return boolean
+     */
+    public function isExistWith($key)
+    {
+        foreach($this->withs as $with){
+            if($with == $key){
+                return true;
+            }
+        }
+
+        return false;
+    }
+    /**
+     *
+     * @param string $key
+     * @return void
+     */
+    public function removeWith($key)
+    {
+        $index = 0;
+        foreach($this->withs as $with){
+            if($with == $key){
+                break;
+            }
+            $index++;
+        }
+
+        unset($this->withs[$index]);
+    }
+    /**
      * Agregar un select a la query
      * @param string $select
      */
