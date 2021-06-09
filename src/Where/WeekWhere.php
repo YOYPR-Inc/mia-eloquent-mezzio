@@ -8,9 +8,9 @@ use \Illuminate\Database\Eloquent\Model;
  *
  * @author matiascamiletti
  */
-class DateWhere extends AbstractWhere 
+class WeekWhere extends AbstractWhere 
 {
-    protected $type = AbstractWhere::TYPE_DATE;
+    protected $type = AbstractWhere::TYPE_WEEK;
     /**
      * List of keys
      *
@@ -31,6 +31,6 @@ class DateWhere extends AbstractWhere
      */
     public function run($query)
     {
-        $query->whereRaw('DATE(?) = DATE(?)', [$this->key, $this->value]);
+        $query->whereRaw('WEEK(?) = WEEK(?)', [$this->key, $this->value]);
     }
 }

@@ -8,9 +8,9 @@ use \Illuminate\Database\Eloquent\Model;
  *
  * @author matiascamiletti
  */
-class DateWhere extends AbstractWhere 
+class MonthWhere extends AbstractWhere 
 {
-    protected $type = AbstractWhere::TYPE_DATE;
+    protected $type = AbstractWhere::TYPE_MONTH;
     /**
      * List of keys
      *
@@ -31,6 +31,6 @@ class DateWhere extends AbstractWhere
      */
     public function run($query)
     {
-        $query->whereRaw('DATE(?) = DATE(?)', [$this->key, $this->value]);
+        $query->whereRaw('(MONTH(?) = MONTH(?) AND YEAR(?) = YEAR(?))', [$this->key, $this->value, $this->key, $this->value]);
     }
 }

@@ -12,6 +12,9 @@ abstract class AbstractWhere
 {
     const TYPE_LIKES = 'likes';
     const TYPE_DATE = 'date';
+    const TYPE_WEEK = 'week';
+    const TYPE_MONTH = 'month';
+    const TYPE_YEAR = 'year';
     /**
      * Type of where
      *
