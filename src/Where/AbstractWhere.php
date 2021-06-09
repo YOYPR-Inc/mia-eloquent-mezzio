@@ -15,6 +15,7 @@ abstract class AbstractWhere
     const TYPE_WEEK = 'week';
     const TYPE_MONTH = 'month';
     const TYPE_YEAR = 'year';
+    const TYPE_BETWEEN = 'between';
     /**
      * Type of where
      *

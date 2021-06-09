@@ -19,6 +19,7 @@ class FactoryWhere
         AbstractWhere::TYPE_WEEK => WeekWhere::class,
         AbstractWhere::TYPE_MONTH => MonthWhere::class,
         AbstractWhere::TYPE_YEAR => YearWhere::class,
+        AbstractWhere::TYPE_BETWEEN => BetweenWhere::class,
     ];
     /**
      * Create where
