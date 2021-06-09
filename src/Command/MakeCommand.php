@@ -57,8 +57,8 @@ class MakeCommand extends BaseMigrationCommand
      * Ej: blog_tag => BlogTag
      * Ej: blog-tag => BlogTag
      *
-     * @param [type] $text
-     * @return void
+     * @param string $text
+     * @return string
      */
     protected function getCamelCase($text)
     {
@@ -70,8 +70,8 @@ class MakeCommand extends BaseMigrationCommand
      * Ej: blog_tag => blogTag
      * Ej: blog-tag => blogTag
      *
-     * @param [type] $text
-     * @return void
+     * @param string $text
+     * @return string
      */
     protected function getCamelCaseVar($text)
     {
