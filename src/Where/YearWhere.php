@@ -31,6 +31,6 @@ class YearWhere extends AbstractWhere
      */
     public function run($query)
     {
-        $query->whereRaw('YEAR(?) = YEAR(?)', [$this->key, $this->value]);
+        $query->whereRaw('YEAR('.$this->cleanKey($this->key).') = YEAR(?)', [$this->value]);
     }
 }

@@ -31,6 +31,6 @@ class MonthWhere extends AbstractWhere
      */
     public function run($query)
     {
-        $query->whereRaw('(MONTH(?) = MONTH(?) AND YEAR(?) = YEAR(?))', [$this->key, $this->value, $this->key, $this->value]);
+        $query->whereRaw('(MONTH('.$this->cleanKey($this->key).') = MONTH(?) AND YEAR('.$this->cleanKey($this->key).') = YEAR(?))', [$this->value, $this->value]);
     }
 }

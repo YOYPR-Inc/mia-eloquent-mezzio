@@ -35,4 +35,14 @@ abstract class AbstractWhere
      * @return void
      */
     abstract public function run($query);
+    /**
+     * Clean key
+     *
+     * @param string $key
+     * @return string
+     */
+    public function cleanKey($key)
+    {
+        return str_replace([' ', ';'], '', $key);
+    }
 }

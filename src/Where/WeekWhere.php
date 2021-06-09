@@ -31,6 +31,6 @@ class WeekWhere extends AbstractWhere
      */
     public function run($query)
     {
-        $query->whereRaw('WEEK(?) = WEEK(?)', [$this->key, $this->value]);
+        $query->whereRaw('WEEK('.$this->cleanKey($this->key).') = WEEK(?)', [$this->value]);
     }
 }

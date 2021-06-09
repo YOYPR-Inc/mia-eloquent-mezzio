@@ -31,6 +31,6 @@ class DateWhere extends AbstractWhere
      */
     public function run($query)
     {
-        $query->whereRaw('DATE(?) = DATE(?)', [$this->key, $this->value]);
+        $query->whereRaw('DATE('.$this->cleanKey($this->key).') = DATE(?)', $this->value);
     }
 }
