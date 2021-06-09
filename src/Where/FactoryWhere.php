@@ -14,7 +14,8 @@ class FactoryWhere
      * 
      */
     static $types = [
-        AbstractWhere::TYPE_LIKES => LikesWhere::class
+        AbstractWhere::TYPE_LIKES => LikesWhere::class,
+        AbstractWhere::TYPE_DATE => DateWhere::class
     ];
     /**
      * Create where

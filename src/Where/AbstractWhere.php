@@ -11,6 +11,7 @@ use \Illuminate\Database\Eloquent\Model;
 abstract class AbstractWhere 
 {
     const TYPE_LIKES = 'likes';
+    const TYPE_DATE = 'date';
     /**
      * Type of where
      *

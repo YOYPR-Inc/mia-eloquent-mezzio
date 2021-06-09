@@ -272,6 +272,21 @@ class Configure
         ));
     }
     /**
+     * Add whereRaw with keys
+     *
+     * @param string $key
+     * @param string $value
+     * @return void
+     */
+    public function addWhereDate($key, $value)
+    {
+        $this->wheres[] = FactoryWhere::create(array(
+            'type' => AbstractWhere::TYPE_DATE,
+            'key' => $key,
+            'value' => $value
+        ));
+    }
+    /**
      * Elimina un where del listado
      * @param string $key
      */
