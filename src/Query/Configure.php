@@ -4,6 +4,7 @@ use \Illuminate\Database\Capsule\Manager as DB;
 use \Illuminate\Database\Eloquent\Model;
 use Mia\Database\Where\AbstractWhere;
 use Mia\Database\Where\FactoryWhere;
+use Mia\Database\Where\RawWhere;
 
 /**
  * Description of Configure
@@ -283,6 +284,21 @@ class Configure
         $this->wheres[] = FactoryWhere::create(array(
             'type' => AbstractWhere::TYPE_DATE,
             'key' => $key,
+            'value' => $value
+        ));
+    }
+    /**
+     * Add whereRaw with keys
+     *
+     * @param string $query
+     * @param array $value
+     * @return void
+     */
+    public function addWhereRaw($query, $value = [])
+    {
+        $this->wheres[] = new RawWhere(array(
+            'type' => AbstractWhere::TYPE_RAW,
+            'query' => $query,
             'value' => $value
         ));
     }
