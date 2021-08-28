@@ -137,12 +137,17 @@ class Configure
         }
 
         // Configuramos orden
-        if($this->hasOrder() && $this->order[0]['column'] == 'nearby'){
+        foreach($this->order as $order) {
+            $query->orderBy($order['field'], $order['type']);
+        }
+
+        /*if($this->hasOrder() && $this->order[0]['column'] == 'nearby'){
             $query->addSelect(DB::raw("6371 * acos(cos(radians(" . $this->order[0]['latitude'] . ")) * cos(radians(latitude)) * cos(radians(longitude) - radians(" . $this->order[0]['longitude'] . ")) + sin(radians(" .$this->order[0]['latitude']. ")) * sin(radians(latitude))) AS distance"));
             $query->orderBy('distance', $this->order[0]['direction']);
         }else if($this->hasOrder() && !$this->deactivateOrder){
             $query->orderBy($this->order[0]['column'], $this->order[0]['direction']);
-        }
+        }*/
+        
         // Configuramos Relaciones
         $query->with($this->withs);
     }
@@ -424,7 +429,7 @@ class Configure
             \Psr\Http\Message\ServerRequestInterface $request = null)
     {
         // Procesar orden de la Query
-        $ord = $handler->getParam($request, 'ord', '');
+        /*$ord = $handler->getParam($request, 'ord', '');
         $asc = $handler->getParam($request, 'asc', 1);
         if($ord != '' && $ord == 'nearby'){
             $latitude = $handler->getParam($request, 'latitude', 0);
@@ -432,7 +437,9 @@ class Configure
             $this->order[] = array('column' => 'nearby', 'direction' => $asc == 0 ? 'asc' : 'desc', 'latitude' => $latitude, 'longitude' => $longitude);
         }else if($ord != ''){
             $this->order[] = array('column' => $ord, 'direction' => $asc == 0 ? 'asc' : 'desc');
-        }
+        }*/
+        // Procesar Orders
+        $this->order = $handler->getParam($request, 'orders', []);
         // Procesar numero de pagina
         $this->page = $handler->getParam($request, 'page', 1);
         // Procesar Joins
