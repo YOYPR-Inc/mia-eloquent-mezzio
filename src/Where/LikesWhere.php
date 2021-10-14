@@ -39,7 +39,14 @@ class LikesWhere extends AbstractWhere
             if(!$isFirst){
                 $raw .= ' OR ';
             }
-            $raw .= $key . ' REGEXP ?';
+
+            // Verify if key is concat
+            if(stripos($key, '+') !== false){
+                $subkeys = str_replace('+', ', " ",', $key);
+                $raw .= 'CONCAT('.$subkeys.')' . ' REGEXP ?';
+            } else {
+                $raw .= $key . ' REGEXP ?';
+            }
 
             $values[] = $this->value;
             $isFirst = false;

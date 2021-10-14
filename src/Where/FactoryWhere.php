@@ -20,6 +20,7 @@ class FactoryWhere
         AbstractWhere::TYPE_MONTH => MonthWhere::class,
         AbstractWhere::TYPE_YEAR => YearWhere::class,
         AbstractWhere::TYPE_BETWEEN => BetweenWhere::class,
+        AbstractWhere::TYPE_RAW => RawWhere::class,
     ];
     /**
      * Create where
