@@ -17,6 +17,8 @@ abstract class AbstractWhere
     const TYPE_YEAR = 'year';
     const TYPE_BETWEEN = 'between';
     const TYPE_RAW = 'raw';
+    const TYPE_NEXT_EVENT = 'next-event';
+    const TYPE_PASS_EVENT = 'pass-event';
     /**
      * Type of where
      *

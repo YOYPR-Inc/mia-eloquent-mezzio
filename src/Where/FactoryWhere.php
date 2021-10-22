@@ -21,6 +21,8 @@ class FactoryWhere
         AbstractWhere::TYPE_YEAR => YearWhere::class,
         AbstractWhere::TYPE_BETWEEN => BetweenWhere::class,
         AbstractWhere::TYPE_RAW => RawWhere::class,
+        AbstractWhere::TYPE_NEXT_EVENT => NextEventWhere::class,
+        AbstractWhere::TYPE_PASS_EVENT => PassEventWhere::class,
     ];
     /**
      * Create where

@@ -263,6 +263,34 @@ class Configure
         $this->where[] = array('key' => $key, 'from' => $from, 'to' => $to, 'between' => true);
     }
     /**
+     * 
+     *
+     * @param array $key
+     * @param boolean $withTime
+     * @return void
+     */
+    public function addWhereNextEvents($key, $withTime = false)
+    {
+        $this->wheres[] = FactoryWhere::create(array(
+            'type' => AbstractWhere::TYPE_NEXT_EVENT,
+            'with_time' => $withTime,
+        ));
+    }
+    /**
+     * 
+     *
+     * @param array $key
+     * @param boolean $withTime
+     * @return void
+     */
+    public function addWherePassEvents($key, $withTime = false)
+    {
+        $this->wheres[] = FactoryWhere::create(array(
+            'type' => AbstractWhere::TYPE_PASS_EVENT,
+            'with_time' => $withTime,
+        ));
+    }
+    /**
      * Add whereRaw with keys
      *
      * @param array $keys
