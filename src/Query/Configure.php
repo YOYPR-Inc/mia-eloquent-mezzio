@@ -235,7 +235,7 @@ class Configure
     {
         $this->wheres[] = FactoryWhere::create(array(
             'type' => AbstractWhere::TYPE_EQUAL,
-            'keys' => $key,
+            'key' => $key,
             'value' => $value
         ));
     }
