@@ -70,4 +70,13 @@ abstract class AbstractWhere
 
         return false;
     }
+    /**
+     * Return type
+     *
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
 }

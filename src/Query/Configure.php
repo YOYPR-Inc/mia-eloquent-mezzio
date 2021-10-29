@@ -233,7 +233,11 @@ class Configure
      */
     public function addWhere($key, $value)
     {
-        $this->where[] = array('key' => $key, 'value' => $value);
+        $this->wheres[] = FactoryWhere::create(array(
+            'type' => AbstractWhere::TYPE_EQUAL,
+            'keys' => $key,
+            'value' => $value
+        ));
     }
     /**
      * Agregar un whereIn a la query
@@ -354,6 +358,30 @@ class Configure
             unset($this->where[$i]);
             break;
         }
+    }
+    
+    public function removeWhereWithType($key, $type)
+    {
+        for ($i = 0; $i < count($this->wheres); $i++) {
+            
+            $wherObj = $this->wheres[$i];
+
+            if($wherObj->getType() == $type && $wherObj->isSameKey($key)){
+                unset($this->where[$i]);
+                break;
+            }
+        }
+    }
+
+    public function removeWhereAllType($type)
+    {
+        $data = [];
+        foreach($this->wheres as $wherObj) {
+            if($wherObj->getType() == $type){
+                $data[] = $wherObj;
+            }
+        }
+        $this->wheres = $data;
     }
     /**
      * Determina si la configuración tiene un orden para la Query
