@@ -11,12 +11,6 @@ use \Illuminate\Database\Eloquent\Model;
 class MonthWhere extends AbstractWhere 
 {
     protected $type = AbstractWhere::TYPE_MONTH;
-    /**
-     * List of keys
-     *
-     * @var array
-     */
-    protected $key = '';
 
     public function __construct($data)
     {

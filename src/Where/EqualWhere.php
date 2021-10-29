@@ -11,12 +11,6 @@ use \Illuminate\Database\Eloquent\Model;
 class EqualWhere extends AbstractWhere 
 {
     protected $type = AbstractWhere::TYPE_EQUAL;
-    /**
-     * List of keys
-     *
-     * @var array
-     */
-    protected $key = '';
 
     public function __construct($data)
     {

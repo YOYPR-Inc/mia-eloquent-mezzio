@@ -12,12 +12,6 @@ class PassEventWhere extends AbstractWhere
 {
     protected $type = AbstractWhere::TYPE_PASS_EVENT;
     /**
-     * List of keys
-     *
-     * @var array
-     */
-    protected $key = '';
-    /**
      *
      * @var boolean
      */

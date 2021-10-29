@@ -27,6 +27,12 @@ abstract class AbstractWhere
      */
     protected $type = '';
     /**
+     * Key
+     *
+     * @var array
+     */
+    protected $key = '';
+    /**
      * Value
      *
      * @var mixed
@@ -49,5 +55,19 @@ abstract class AbstractWhere
     public function cleanKey($key)
     {
         return str_replace([' ', ';'], '', $key);
+    }
+    /**
+     * Verify if key is same
+     *
+     * @param string $key
+     * @return boolean
+     */
+    public function isSameKey($key)
+    {
+        if($this->key == $key){
+            return true;
+        }
+
+        return false;
     }
 }

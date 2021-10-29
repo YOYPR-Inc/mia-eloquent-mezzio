@@ -12,12 +12,6 @@ class NextEventWhere extends AbstractWhere
 {
     protected $type = AbstractWhere::TYPE_NEXT_EVENT;
     /**
-     * List of keys
-     *
-     * @var array
-     */
-    protected $key = '';
-    /**
      *
      * @var boolean
      */

@@ -11,12 +11,6 @@ use \Illuminate\Database\Eloquent\Model;
 class WeekWhere extends AbstractWhere 
 {
     protected $type = AbstractWhere::TYPE_WEEK;
-    /**
-     * List of keys
-     *
-     * @var array
-     */
-    protected $key = '';
 
     public function __construct($data)
     {

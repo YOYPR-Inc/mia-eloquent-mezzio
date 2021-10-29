@@ -11,12 +11,6 @@ use \Illuminate\Database\Eloquent\Model;
 class DateWhere extends AbstractWhere 
 {
     protected $type = AbstractWhere::TYPE_DATE;
-    /**
-     * List of keys
-     *
-     * @var array
-     */
-    protected $key = '';
 
     public function __construct($data)
     {

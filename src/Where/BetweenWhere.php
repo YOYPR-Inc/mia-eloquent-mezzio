@@ -11,12 +11,7 @@ use \Illuminate\Database\Eloquent\Model;
 class BetweenWhere extends AbstractWhere 
 {
     protected $type = AbstractWhere::TYPE_BETWEEN;
-    /**
-     * Key
-     *
-     * @var array
-     */
-    protected $key = '';
+    
     protected $from = '';
     protected $to = '';
 
