@@ -29,7 +29,7 @@ abstract class AbstractWhere
     /**
      * Key
      *
-     * @var array
+     * @var string
      */
     protected $key = '';
     /**
@@ -78,5 +78,14 @@ abstract class AbstractWhere
     public function getType()
     {
         return $this->type;
+    }
+    /**
+     * Undocumented function
+     *
+     * @return string
+     */
+    public function getKey()
+    {
+        return $this->key;
     }
 }

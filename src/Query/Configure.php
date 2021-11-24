@@ -345,6 +345,12 @@ class Configure
      */
     public function removeWhere($key)
     {
+        $this->wheres = array_filter($this->wheres, function($w) use ($key){
+            if($w->getKey() != $key){
+                return true;
+            }
+        });
+
         for ($i = 0; $i < count($this->where); $i++) {
             
             if(!isset($this->where[$i])){
@@ -391,6 +397,21 @@ class Configure
     {
         if(count($this->order) > 0){
             return true;
+        }
+        return false;
+    }
+    /**
+     * Valida si el KEY existe en un where
+     *
+     * @param string $key
+     * @return boolean
+     */
+    public function hasWhere($key)
+    {
+        foreach($this->wheres as $where) {
+            if($where->getKey() == $key){
+                return true;
+            }
         }
         return false;
     }
@@ -449,7 +470,7 @@ class Configure
         return $this->joins;
     }
     /**
-     * 
+     * @deprecated
      * @param string $key
      * @return arary|null
      */
@@ -466,6 +487,22 @@ class Configure
         }
         
         return null;
+    }
+    /**
+     * Devuelve un array con todos los Wheres que coincidan con el KEY
+     *
+     * @param string $key
+     * @return array
+     */
+    public function getWheresByKey($key)
+    {
+        $data = [];
+        foreach($this->wheres as $wherObj) {
+            if($wherObj->getKey() == $key){
+                $data[] = $wherObj;
+            }
+        }
+        return $data;
     }
     /**
      * 
