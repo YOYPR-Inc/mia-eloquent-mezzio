@@ -31,4 +31,20 @@ class BetweenWhere extends AbstractWhere
     {
         $query->whereBetween($this->key, [$this->from, $this->to]);
     }
+    /**
+     *
+     * @return string
+     */
+    public function getFrom()
+    {
+        return $this->from;
+    }
+    /**
+     *
+     * @return string
+     */
+    public function getTo()
+    {
+        return $this->to;
+    }
 }
