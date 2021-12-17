@@ -54,4 +54,23 @@ class LikesWhere extends AbstractWhere
         //$values = $search . '|' . implode('|', explode(' ', $search));
         $query->whereRaw('('.$raw.')', $values);
     }
+    /**
+     * Undocumented function
+     *
+     * @param array $keys
+     * @return void
+     */
+    public function setKeys($keys)
+    {
+        $this->keys = $keys;
+    }
+    /**
+     * Undocumented function
+     *
+     * @return string
+     */
+    public function getKeys()
+    {
+        return $this->keys;
+    }
 }

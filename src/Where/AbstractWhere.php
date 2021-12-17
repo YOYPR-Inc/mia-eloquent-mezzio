@@ -88,4 +88,13 @@ abstract class AbstractWhere
     {
         return $this->key;
     }
+    /**
+     * Undocumented function
+     *
+     * @return string
+     */
+    public function getValue()
+    {
+        return $this->value;
+    }
 }
