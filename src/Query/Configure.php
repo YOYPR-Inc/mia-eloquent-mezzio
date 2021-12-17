@@ -505,6 +505,22 @@ class Configure
         return $data;
     }
     /**
+     * Devuelve un array con todos los Wheres que coincidan con el TYPE
+     *
+     * @param string $key
+     * @return array
+     */
+    public function getWheresByType($type)
+    {
+        $data = [];
+        foreach($this->wheres as $wherObj) {
+            if(is_a($wherObj, $type)){
+                $data[] = $wherObj;
+            }
+        }
+        return $data;
+    }
+    /**
      * 
      * @return array
      */
