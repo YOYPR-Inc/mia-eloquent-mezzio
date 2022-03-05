@@ -152,6 +152,16 @@ class Configure
         $query->with($this->withs);
     }
     /**
+     *
+     * @param string $field
+     * @param string $type
+     * @return void
+     */
+    public function addOrder($field, $type = 'asc')
+    {
+        $this->order[] = ['field' => $field, 'type' => $type];
+    }
+    /**
      * 
      */
     public function addWith($key)
