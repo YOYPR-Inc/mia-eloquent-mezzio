@@ -8,19 +8,13 @@ use \Illuminate\Database\Eloquent\Model;
  *
  * @author matiascamiletti
  */
-class RawWhere extends AbstractWhere 
+class InWhere extends AbstractWhere 
 {
-    protected $type = AbstractWhere::TYPE_RAW;
-    /**
-     * List of keys
-     *
-     * @var array
-     */
-    protected $query = '';
+    protected $type = AbstractWhere::TYPE_IN;
 
     public function __construct($data)
     {
-        $this->query = $data['query'];
+        $this->key = $data['key'];
         $this->value = $data['value'];
     }
     /**
@@ -31,6 +25,6 @@ class RawWhere extends AbstractWhere
      */
     public function run($query)
     {
-        $query->whereRaw($this->query, $this->value);
+        $query->whereIn($this->cleanKey($this->key), $this->value);
     }
 }

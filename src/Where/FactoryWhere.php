@@ -24,6 +24,7 @@ class FactoryWhere
         AbstractWhere::TYPE_NEXT_EVENT => NextEventWhere::class,
         AbstractWhere::TYPE_PASS_EVENT => PassEventWhere::class,
         AbstractWhere::TYPE_EQUAL => EqualWhere::class,
+        AbstractWhere::TYPE_IN => InWhere::class,
     ];
     /**
      * Create where

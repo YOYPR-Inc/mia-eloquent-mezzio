@@ -20,6 +20,7 @@ abstract class AbstractWhere
     const TYPE_NEXT_EVENT = 'next-event';
     const TYPE_PASS_EVENT = 'pass-event';
     const TYPE_EQUAL = 'equal';
+    const TYPE_IN = 'in';
     /**
      * Type of where
      *
