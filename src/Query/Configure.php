@@ -375,7 +375,7 @@ class Configure
             break;
         }
     }
-    
+
     public function removeWhereWithType($key, $type)
     {
         for ($i = 0; $i < count($this->wheres); $i++) {
@@ -383,7 +383,7 @@ class Configure
             $wherObj = $this->wheres[$i];
 
             if($wherObj->getType() == $type && $wherObj->isSameKey($key)){
-                unset($this->where[$i]);
+                unset($this->wheres[$i]);
                 break;
             }
         }
@@ -393,7 +393,7 @@ class Configure
     {
         $data = [];
         foreach($this->wheres as $wherObj) {
-            if($wherObj->getType() == $type){
+            if($wherObj->getType() != $type){
                 $data[] = $wherObj;
             }
         }
