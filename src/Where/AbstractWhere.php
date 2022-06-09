@@ -21,6 +21,8 @@ abstract class AbstractWhere
     const TYPE_PASS_EVENT = 'pass-event';
     const TYPE_EQUAL = 'equal';
     const TYPE_IN = 'in';
+    const TYPE_GREATER_THAN = 'greater-than';
+    const TYPE_LESS_THAN = 'less-than';
     /**
      * Type of where
      *
