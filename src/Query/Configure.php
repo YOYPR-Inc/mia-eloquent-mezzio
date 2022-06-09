@@ -378,15 +378,13 @@ class Configure
 
     public function removeWhereWithType($key, $type)
     {
-        for ($i = 0; $i < count($this->wheres); $i++) {
-            
-            $wherObj = $this->wheres[$i];
-
-            if($wherObj->getType() == $type && $wherObj->isSameKey($key)){
-                unset($this->wheres[$i]);
-                break;
+        $data = [];
+        foreach($this->wheres as $wherObj) {
+            if($wherObj->getType() != $type||($wherObj->getType() == $type && !$wherObj->isSameKey($key))){
+                $data[] = $wherObj;
             }
         }
+        $this->wheres = $data;
     }
 
     public function removeWhereAllType($type)
