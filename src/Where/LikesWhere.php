@@ -73,4 +73,20 @@ class LikesWhere extends AbstractWhere
     {
         return $this->keys;
     }
+    /**
+     * Verify if key is same
+     *
+     * @param string $key
+     * @return boolean
+     */
+    public function isSameKey($key)
+    {
+        foreach($this->keys as $keyInt){
+            if($keyInt == $key){
+                return true;
+            }
+        }
+
+        return false;
+    }
 }

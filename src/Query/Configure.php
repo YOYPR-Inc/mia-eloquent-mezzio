@@ -356,7 +356,7 @@ class Configure
     public function removeWhere($key)
     {
         $this->wheres = array_filter($this->wheres, function($w) use ($key){
-            if($w->getKey() != $key){
+            if(!$w->isSameKey($key)){
                 return true;
             }
         });
@@ -417,7 +417,7 @@ class Configure
     public function hasWhere($key)
     {
         foreach($this->wheres as $where) {
-            if($where->getKey() == $key){
+            if($where->isSameKey($key)){
                 return true;
             }
         }
@@ -506,7 +506,7 @@ class Configure
     {
         $data = [];
         foreach($this->wheres as $wherObj) {
-            if($wherObj->getKey() == $key){
+            if($wherObj->isSameKey($key)){
                 $data[] = $wherObj;
             }
         }
