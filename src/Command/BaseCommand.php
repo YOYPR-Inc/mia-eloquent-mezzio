@@ -29,6 +29,10 @@ abstract class BaseCommand
     protected function initEloquent()
     {
         $config = include 'config/autoload/eloquent.global.php';
+        if (file_exists('config/autoload/development.local.php')) {
+            $configLocal = include 'config/autoload/development.local.php';
+            $config = array_merge($config, $configLocal);
+        }
         $this->capsule = new \Illuminate\Database\Capsule\Manager();
         $this->capsule->addConnection($config['eloquent']);
         $this->capsule->setAsGlobal();
