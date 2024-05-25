@@ -1,12 +1,12 @@
 {
-    "name": "agencycoda/mia-eloquent-mezzio",
+    "name": "yoypr/mia-eloquent-mezzio",
     "description": "The library for Mezzio",
     "version": "0.0.44",
     "minimum-stability": "stable",
     "license": "MIT",
     "authors": [{
-        "name": "Matias Camiletti",
-        "homepage": "https://agencycoda.com"
+        "name": "Alejandro Rodriguez",
+        "homepage": "https://yoypr.com"
     }],
     "require": {
         "php": ">=7.3",
@@ -16,7 +16,7 @@
         "illuminate/database": "^8.20",
         "illuminate/pagination": "^8.20",
         "illuminate/filesystem": "^8.20",
-        "agencycoda/mia-core-mezzio": "v2.x-dev"
+        "yoypr/mia-core-mezzio": "v2.x-dev"
     },
     "autoload": {
         "psr-4": {
@@ -35,7 +35,7 @@
     "repositories": [
         {
             "type": "git",
-            "url": "https://github.com/agencycoda/mia-core-mezzio.git"
+            "url": "https://github.com/YOYPR-Inc/mia-core-mezzio.git"
         }
     ]
 }
